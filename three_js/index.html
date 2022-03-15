@@ -35,27 +35,25 @@
         camera.position.z = 5;
         renderer.render(scene, camera);
 
-
-
+        function animate(time) {
+            requestAnimationFrame(animate)
+            TWEEN.update(time)
+}
+    requestAnimationFrame(animate)
 
         function mooveCamera() {
-
-            //camera.position.y = 1;
-            //renderer.render(scene, camera);
-
-            const coords = { x: camera.position.x, y: camera.position.y };
+          const coords = { x: camera.position.x, y: camera.position.y };
             new TWEEN.Tween(coords)
-                .to({ x: 2, y: 2 })
-
-                
+                .to({ x: 2, y: 1 })
+                .onUpdate(() => {
+                    console.log("here")
+                    camera.position.x = coords.x
+                    camera.position.y = coords.y
+                    renderer.render(scene, camera);
+                }
+                )
                 .start();
-                animate()
             };
-            
-        function animate() {
-            requestAnimationFrame(animate)
-            TWEEN.update()
-}
 
 
     </script>
