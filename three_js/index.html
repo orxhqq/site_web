@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <title>test three.js</title>
-        <style>
-            body { margin: 0; }
-        </style>
-    </head>
-    <body>
-        <script src="../js/three.js"></script>
-        <script>      
-            const renderer = new THREE.WebGLRenderer();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            document.body.appendChild( renderer.domElement );
 
-            const camera = new THREE.PerspectiveCamera( 45, window.innerWidth, window.innerHeight, 1, 500 );
-            camera.position.set( 0, 0, 100 );
-            camera.lookAt( 0, 0, 0 );
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>test three.js</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
 
-            const scene = new THREE.Scene();
+<body>
+    <script src="../js/three.js"></script>
+    <script src="../js/tween.umd.js"></script>
+    <script>
 
-            const material = new THREE.LineBasicMaterial( { color: 0x33caff } );
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-            const points = [];
-            points.push( new THREE.Vector3( - 10, 0, 0) );
-            points.push( new THREE.Vector3( 0, 10, 0) );
-            points.push( new THREE.Vector3(10, 0, 0) );
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            const geometry = new THREE.BufferGeometry().setFromPoints( points );
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        const light = new THREE.AmbientLight( 0x404040 );
+        scene.add(light);
+        scene.add(cube);
 
-            const line = new THREE.Line( geometry, material );
+        light.position.x = 3;
+        camera.position.z = 5;
+        renderer.render(scene, camera);
 
-            scene.add( line );
-            renderer.render( scene, camera );
 
-        </script>
-    </body>
+
+
+        function mooveCamera() {
+
+            //camera.position.y = 1;
+            //renderer.render(scene, camera);
+
+            const coords = { x: camera.position.x, y: camera.position.y };
+            new TWEEN.Tween(coords)
+                .to({ x: 2, y: 2 })
+
+                
+                .start();
+                animate()
+            };
+            
+        function animate() {
+            requestAnimationFrame(animate)
+            TWEEN.update()
+}
+
+
+    </script>
+
+    <button onclick="mooveCamera();">Moove camera</button>
+
+</body>
+
 </html>
