@@ -49,16 +49,30 @@
                     console.log("here")
                     camera.position.x = coords.x
                     camera.position.y = coords.y
-                    renderer.render(scene, camera);
-                }
-                )
+                    renderer.render(scene, camera);})
+                .easing(TWEEN.Easing.Quintic.Out)
                 .start();
             };
+
+            function cameraPlace(){
+                const coords = { x: camera.position.x, y: camera.position.y };
+            new TWEEN.Tween(coords)
+                .to({ x: 0, y: 0 })
+                .onUpdate(() => {
+                    console.log("here")
+                    camera.position.x = coords.x
+                    camera.position.y = coords.y
+                    renderer.render(scene, camera);})
+                .easing(TWEEN.Easing.Quintic.Out)
+                .start();
+            };
+
 
 
     </script>
 
     <button onclick="mooveCamera();">Moove camera</button>
+    <button onclick="cameraPlace();">replace camera</button>
 
 </body>
 
