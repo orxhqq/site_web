@@ -1,0 +1,12 @@
+{
+  "name": "site_web",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "esbuild js/projet.js  --tree-shaking=false --bundle --outfile=dist/output.js"
+  },
+  "dependencies": {
+    "esbuild": "^0.14.27",
+    "three": "^0.138.3"
+  }
+}
