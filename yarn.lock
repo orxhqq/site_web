@@ -2,21 +2,6 @@
 # yarn lockfile v1
 
 
-"@sh-dave/format-vox@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@sh-dave/format-vox/-/format-vox-0.1.5.tgz#1f627a946e80786070fe4bfe6ad6980411921d38"
-  integrity sha512-RvYyRfPNzJ+qfxzXnHI3HgVmiaqOiXNb/vmKjxthuhYXt+17GM9pTiU/6L+kTKylIKZGVi2xnPtL91BOl5Ty8Q==
-
-auto-bind@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/auto-bind/-/auto-bind-4.0.0.tgz#e3589fc6c2da8f7ca43ba9f84fa52a744fc997fb"
-  integrity sha512-Hdw8qdNiqdJ8LqT0iK0sVzkFbzg6fhnQqqfWhBDxcHZvU75+B+ayzTy8x+k5Ix0Y92XOhOUlx74ps+bA6BeYMQ==
-
-binvox@^1.0.2:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/binvox/-/binvox-1.1.0.tgz#19cadfd1bbc03b8a6d44634f8d47f1e8f96709c3"
-  integrity sha512-mlwSOZBJa0TiqdkG5I5/BLdDALyFwMK+kckwLmjrWYUL77fZZP/+N37IDZeH9fYvS+XHORbUku0Y6KjwSDn5vA==
-
 esbuild-android-64@0.14.27:
   version "0.14.27"
   resolved "https://registry.yarnpkg.com/esbuild-android-64/-/esbuild-android-64-0.14.27.tgz#b868bbd9955a92309c69df628d8dd1945478b45c"
@@ -142,35 +127,6 @@ esbuild@^0.14.27:
     esbuild-windows-32 "0.14.27"
     esbuild-windows-64 "0.14.27"
     esbuild-windows-arm64 "0.14.27"
-
-iterator-result@1.x.x, iterator-result@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/iterator-result/-/iterator-result-1.0.0.tgz#728d662bd578b3c35ec297b599e1e5937657cc5b"
-  integrity sha512-Zqg84fiN3tF7APhyqkHs9t0bYXpIL1zRs4hslexxfmgvDTTDFIUa501H+2KgTWjH0R4ifrWc5dRkfqSrXQm37Q==
-
-"math-ds@>= 1.0.0 < 2.0.0":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/math-ds/-/math-ds-1.2.1.tgz#e85cbe55178f1bb77256b792b6abfe9576f15c38"
-  integrity sha512-Fzf0G2+h7d1DqWtQDw3QLmx4R5Uat4Lj3x0iRV4fLyuUH94pODq6Y2UOqSFN0aAU+mQHESBPGbcCyaAXDaYV+A==
-
-sparse-octree@^6.0.2:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/sparse-octree/-/sparse-octree-6.1.0.tgz#af3ac513bc81cbc2816142c098abd2d053bd8535"
-  integrity sha512-eHKbyZGRsqnuL92dAOSrDcQQhlm3q2B82cLLHJfUD8m6MbELjgCoyualkZnq5jYrLCf9M38cLo17UyW7TLh0Rg==
-  dependencies:
-    iterator-result "1.x.x"
-
-three-voxel-loader@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/three-voxel-loader/-/three-voxel-loader-1.2.2.tgz#20483403bafabd1d24d6c4a3c0e4fd07949077f6"
-  integrity sha512-04ogei+CIHBSTzR0A0cbxBo4wJkwZMFoo86CweKm1m+skjV2VkGFc399Nybf7uv6Fti5lY6tkDU3rl237xwlpQ==
-  dependencies:
-    "@sh-dave/format-vox" "^0.1.5"
-    auto-bind "^4.0.0"
-    binvox "^1.0.2"
-    iterator-result "^1.0.0"
-    math-ds ">= 1.0.0 < 2.0.0"
-    sparse-octree "^6.0.2"
 
 three@^0.138.3:
   version "0.138.3"
