@@ -1,13 +1,14 @@
 import * as THREE from 'three';
-import { VOXLoader, VOXMesh } from './jsm/loaders/VOXLoader.js';
+import { VOXLoader, VOXMesh } from '../vendor/jsm/loaders/VOXLoader.js';
+import { OrbitControls } from '../vendor/jsm/controls/OrbitControls.js';
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.01, 1000);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.01, 10);
 // camera.position.z = 5;
-camera.position.set( 0.175, 0.075, 1 );
+camera.position.set( 0.175, 0.075, 0.175 );
 
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xf400f3)
+scene.background = new THREE.Color(0x408096)
 scene.add(camera)
 
 const hemiLight = new THREE.HemisphereLight( 0x888888, 0x444444, 1 );
@@ -35,11 +36,16 @@ renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+controls = new OrbitControls( camera, renderer.domElement );
+				controls.minDistance = 0;
+				controls.maxDistance = 10;
 
 function animate(time) {
 	requestAnimationFrame(animate)
 	TWEEN.update(time)
+	controls.update();
 	renderer.render(scene, camera);
+	
 }
 requestAnimationFrame(animate)
 
