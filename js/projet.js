@@ -41,9 +41,9 @@ window.scene = scene;
 document.body.appendChild(renderer.domElement);
 
 controls = new OrbitControls( camera, renderer.domElement );
-				controls.minDistance = 0;
-				controls.maxDistance = 10;
-				
+controls.minDistance = 0;
+controls.maxDistance = 10;
+
 camera.position.set( -0.28, 0.0657, 0.442 );
 // camera.lookAt (0, -1, 2);
 // controls.update();
@@ -54,7 +54,7 @@ function animate(time) {
 	TWEEN.update(time)
 	controls.update();
 	renderer.render(scene, camera);
-	
+
 }
 requestAnimationFrame(animate)
 
@@ -70,7 +70,7 @@ window.mooveCamera = function() {
 		})
 		.easing(TWEEN.Easing.Quintic.Out)
 		.start();
-			console.log("move")
+	console.log("move")
 	controls.update();
 	console.log(camera.position);
 };
@@ -89,7 +89,8 @@ window.place1 = function (){
 		})
 		.easing(TWEEN.Easing.Quintic.Out)
 		.start();
-			console.log("place")
+	console.log("place")
+	controls.target.set(0.10, -0.086, -0.033);
 	controls.update();
 	console.log(camera.position);
 };
@@ -108,7 +109,11 @@ window.place2 = function (){
 		})
 		.easing(TWEEN.Easing.Quintic.Out)
 		.start();
-			console.log("place")
+	console.log("place")
+	// controls.target.set(0.091011, -0.11749, -0.034745);
+	controls.target.set(0.1, -0.1, 0.04)
+
+
 	controls.update();
 	console.log(camera.position);
 };
