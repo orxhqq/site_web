@@ -2,10 +2,13 @@ import * as THREE from 'three';
 import { VOXLoader, VOXMesh } from '../vendor/jsm/loaders/VOXLoader.js';
 import { OrbitControls } from '../vendor/jsm/controls/OrbitControls.js';
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.01, 10);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.01, 10000);
 // camera.position.z = 5;
-camera.position.set( 0.175, 0.075, 0.175 );
-
+camera.position.set( -0.25, -0.10, 0.25, );
+camera.lookAt (0, -1, 2);
+// camera.setViewOffset (0.25, 0.25, 0.25, 0.25, 0.25, 0.25);
+// camera.position.y = z;
+// controls.update();
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x408096)
@@ -39,6 +42,7 @@ document.body.appendChild(renderer.domElement);
 controls = new OrbitControls( camera, renderer.domElement );
 				controls.minDistance = 0;
 				controls.maxDistance = 10;
+				
 
 function animate(time) {
 	requestAnimationFrame(animate)
