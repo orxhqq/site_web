@@ -9,5 +9,8 @@
     "esbuild": "^0.14.27",
     "http-server": "^14.1.0",
     "three": "^0.138.3"
+  },
+  "devDependencies": {
+    "lil-gui": "^0.16.1"
   }
 }

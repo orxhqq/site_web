@@ -182,6 +182,11 @@
   dependencies:
     "safer-buffer" ">= 2.1.2 < 3.0.0"
 
+"lil-gui@^0.16.1":
+  "integrity" "sha512-6wnnfBvQxJYRhdLyIA+w5b8utwbuVxNmtpTXElm36OSgHa8lyKp00Xz/4AEx3kvodT0AJYgbfadCFWAM0Q8DgQ=="
+  "resolved" "https://registry.npmjs.org/lil-gui/-/lil-gui-0.16.1.tgz"
+  "version" "0.16.1"
+
 "lodash@^4.17.14":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
