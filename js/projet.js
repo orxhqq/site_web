@@ -7,14 +7,14 @@ import GUI from 'lil-gui';
 
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
-lookAt = { x:0.042, y:-0.082, z:-0.18};
+lookAt = new THREE.Vector3( 0.042, -0.082, -0.18 );
 camera.position.set( -0.156, -0.058, 0.1735 );
 camera.lookAt(lookAt);
 window.camera = camera;
 // camera.position.z = 5;
 // camera.setViewOffset (0.25, 0.25, 0.25, 0.25, 0.25, 0.25);
 // camera.position.y = z;
-// controls.update();
+// controls.update()e
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x408096)
@@ -78,7 +78,7 @@ function updateCamera() {
 	camera.updateProjectionMatrix();
   }
 function updatelookAt() {
-	camera.lookAt(lookAt.x, lookAt.z, lookAt.y);
+	camera.lookAt(lookAt);
 }
 const gui = new GUI();
 gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
@@ -137,14 +137,15 @@ window.place1 = function (){
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
+      camera.lookAt( new THREE.Vector3( 0.072, -0.072, -0.16 ));
 			renderer.render(scene, camera);
 
 		})
 		.easing(TWEEN.Easing.Quintic.Out)
 		.start();
 	console.log("place")
-	lookAt1 = { x:0.042, y:-0.082, z:-0.18};
-	camera.lookAt(lookAt1)
+
+
 	//controls.target.set(0.10, -0.086, -0.033);
 	//controls.update();
 	console.log(camera.position);
@@ -160,6 +161,7 @@ window.place2 = function (){
 			camera.position.y = coords.y
 			camera.position.z = coords.z
 			
+      camera.lookAt( new THREE.Vector3( 0.52, -0.062, -0.16 ));
 			renderer.render(scene, camera);
 
 		})
