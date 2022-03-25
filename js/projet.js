@@ -7,7 +7,7 @@ import GUI from 'lil-gui';
 
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
-lookAt = new THREE.Vector3( 0.042, -0.082, -0.18 );
+lookAt = new THREE.Vector3( 0.042, -0.156, -0.058 );
 camera.position.set( -0.156, -0.058, 0.1735 );
 camera.lookAt(lookAt);
 window.camera = camera;
@@ -132,12 +132,12 @@ window.place1 = function (){
 	console.log("camera place");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: -0.156, y: -0.0058, z: 0.1735 })
+		.to({ x: -0.156, y: -0.058, z: 0.1735 })
 		.onUpdate(function() {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
-      camera.lookAt( new THREE.Vector3( 0.072, -0.072, -0.16 ));
+      camera.lookAt( new THREE.Vector3( 0.042, -0.156, -0.058 ));
 			renderer.render(scene, camera);
 
 		})
@@ -155,24 +155,58 @@ window.place2 = function (){
 	console.log("camera place2");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: -0.2835, y: 0.0374, z: -0.04158 })
+		.to({ x: -0.156, y: 0.016, z: -0.156 })
 		.onUpdate(function() {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
 			
-      camera.lookAt( new THREE.Vector3( 0.52, -0.062, -0.16 ));
+      camera.lookAt( new THREE.Vector3( 0.336, -0.278, 0.238 ));
 			renderer.render(scene, camera);
 
 		})
 		.easing(TWEEN.Easing.Quintic.Out)
 		.start();
 	console.log("place")
-	// controls.target.set(0.091011, -0.11749, -0.034745);
-	//controls.target.set(0.1, -0.1, 0.04)
-
-
-	//controls.update();
 	console.log(camera.position);
 };
 
+window.place3 = function (){
+	console.log("camera place2");
+	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
+	new TWEEN.Tween(coords)
+		.to({ x: 0.164, y: 0.09, z: -0.156 })
+		.onUpdate(function() {
+			camera.position.x = coords.x
+			camera.position.y = coords.y
+			camera.position.z = coords.z
+			
+      camera.lookAt( new THREE.Vector3( 0.042, 0.02, -0.032 ));
+			renderer.render(scene, camera);
+
+		})
+		.easing(TWEEN.Easing.Quintic.Out)
+		.start();
+	console.log("place")
+	console.log(camera.position);
+};
+
+window.place4 = function (){
+	console.log("camera place2");
+	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
+	new TWEEN.Tween(coords)
+		.to({ x: 0.14, y: 0.148, z: 0.134 })
+		.onUpdate(function() {
+			camera.position.x = coords.x
+			camera.position.y = coords.y
+			camera.position.z = coords.z
+			
+      camera.lookAt( new THREE.Vector3( -0.008, 0.062, -0.012 ));
+			renderer.render(scene, camera);
+
+		})
+		.easing(TWEEN.Easing.Quintic.Out)
+		.start();
+	console.log("place")
+	console.log(camera.position);
+};
