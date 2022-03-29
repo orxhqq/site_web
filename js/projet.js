@@ -221,8 +221,6 @@ window.place = function (newCameraPlace){
 	if(newCameraPlace < 1 || newCameraPlace > 4){
 		return
 	}	
-	
-
 	window.currentPlace = newCameraPlace;
 	console.log(window.cameraPlace);
 	switch(newCameraPlace){
