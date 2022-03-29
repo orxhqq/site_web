@@ -100,6 +100,10 @@ gui.add(lookAt, "z", -1, 1).onChange(updatelookAt);
 
 // controls.update();
 //window.controls = controls;
+console.log("ici")
+
+window.currentPlace = 1;
+
 
 function animate(time) {
 	requestAnimationFrame(animate)
@@ -109,6 +113,8 @@ function animate(time) {
 
 }
 requestAnimationFrame(animate)
+
+
 
 window.mooveCamera = function() {
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
@@ -201,7 +207,7 @@ window.place4 = function (){
 			camera.position.y = coords.y
 			camera.position.z = coords.z
 			
-      camera.lookAt( new THREE.Vector3( -0.008, 0.062, -0.012 ));
+      camera.lookAt( new THREE.Vector3( -0.008, 0.062, -0.012 )); 
 			renderer.render(scene, camera);
 
 		})
@@ -210,3 +216,28 @@ window.place4 = function (){
 	console.log("place")
 	console.log(camera.position);
 };
+
+window.place = function (newCameraPlace){
+	if(newCameraPlace < 1 || newCameraPlace > 4){
+		return
+	}	
+	
+
+	window.currentPlace = newCameraPlace;
+	console.log(window.cameraPlace);
+	switch(newCameraPlace){
+		case 1:
+		place1();
+		break;
+		case 2:
+		place2();
+		break;
+		case 3:
+		place3();
+		break;
+		case 4:
+		place4();
+		break;
+	}
+}
+
