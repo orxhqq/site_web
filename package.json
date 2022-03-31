@@ -6,9 +6,11 @@
     "build": "esbuild js/projet.js  --tree-shaking=false --bundle --outfile=dist/output.js"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
     "esbuild": "^0.14.27",
     "http-server": "^14.1.0",
-    "three": "^0.138.3"
+    "three": "^0.138.3",
+    "vox-to-gltf": "^0.6.2"
   },
   "devDependencies": {
     "lil-gui": "^0.16.1"

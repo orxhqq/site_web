@@ -1,14 +1,20 @@
+import { Application } from "@hotwired/stimulus"
+import PresenterController from './presenter_controller.js';
+window.Stimulus = Application.start()
+Stimulus.register("presenter", PresenterController)
+
 import * as THREE from 'three';
-import { VOXLoader, VOXMesh } from '../vendor/jsm/loaders/VOXLoader.js';
+// import { VOXLoader, VOXMesh } from '../vendor/jsm/loaders/VOXLoader.js';
 //import { OrbitControls } from '../vendor/jsm/controls/OrbitControls.js';
 import GUI from 'lil-gui';
-
+import { GLTFLoader} from '../vendor/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
 
 
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
 lookAt = new THREE.Vector3( 0.042, -0.156, -0.058 );
-camera.position.set( -0.156, -0.058, 0.1735 );
+camera.position.set( -74, 19.4, 100 );
 camera.lookAt(lookAt);
 window.camera = camera;
 // camera.position.z = 5;
@@ -17,7 +23,7 @@ window.camera = camera;
 // controls.update()e
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x408096)
+scene.background = new THREE.Color(0xffffff)
 scene.add(camera)
 
 const hemiLight = new THREE.HemisphereLight( 0x888888, 0x444444, 1 );
@@ -26,27 +32,47 @@ const dirLight = new THREE.DirectionalLight( 0xffffff, 0.75 );
 dirLight.position.set( 1.5, 3, 2.5 );
 scene.add( dirLight );
 
-const loader = new VOXLoader();
-loader.load("../models/monu2.vox",
-	function (chunks) {
-		for (let i = 0; i < chunks.length; i++) {
-			const chunk = chunks[i];
-			const mesh = new VOXMesh(chunk);
-			mesh.scale.setScalar(0.0015);
-			scene.add(mesh);
-		}
+new GLTFLoader()
+.setPath('../models/')
+.setDRACOLoader( new DRACOLoader().setDecoderPath( '../js/libs/draco/gltf/' )  )
+.load(
+	// resource URL
+	'untitled4.glb',
+	// called when the resource is loaded
+	function ( gltf ) {
+
+		scene.add( gltf.scene );
+
+		gltf.animations; // Array<THREE.AnimationClip>
+		gltf.scene; // THREE.Group
+		gltf.scenes; // Array<THREE.Group>
+		gltf.cameras; // Array<THREE.Camera>
+		gltf.asset; // Object
+
+	},
+
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	},
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
 	}
-	,undefined, function(error){
-		console.error(error);
-	});
+);
+
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize(window.innerWidth, window.innerHeight);
 window.renderer = renderer;
 window.scene = scene;
-document.body.appendChild(renderer.domElement);
-
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+document.getElementById("canvas").appendChild(renderer.domElement);
 
 
 
@@ -85,12 +111,12 @@ gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
 const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
 gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near').onChange(updateCamera);
 gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far').onChange(updateCamera);
-gui.add(camera.position, 'x', -1, 1).name("camera.position.x").onChange(updateCamera);
-gui.add(camera.position, 'z', -1, 1).name("camera.position.z").onChange(updateCamera);
-gui.add(camera.position, 'y', -1, 1).name("camera.position.y").onChange(updateCamera);
-gui.add(lookAt, "x", -1, 1).onChange(updatelookAt);
-gui.add(lookAt, "y", -1, 1).onChange(updatelookAt);
-gui.add(lookAt, "z", -1, 1).onChange(updatelookAt);
+gui.add(camera.position, 'x', -100, 100).name("camera.position.x").onChange(updateCamera);
+gui.add(camera.position, 'z', -100, 100).name("camera.position.z").onChange(updateCamera);
+gui.add(camera.position, 'y', -100, 100).name("camera.position.y").onChange(updateCamera);
+gui.add(lookAt, "x", -100, 100).onChange(updatelookAt);
+gui.add(lookAt, "y", -100, 100).onChange(updatelookAt);
+gui.add(lookAt, "z", -100, 100).onChange(updatelookAt);
 
 
 //controls = new OrbitControls( camera, renderer.domElement );
@@ -113,26 +139,6 @@ function animate(time) {
 
 }
 requestAnimationFrame(animate)
-
-
-
-window.mooveCamera = function() {
-	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
-	new TWEEN.Tween(coords)
-		.to({ x: 2, y: 1, z: 0 })
-		.onUpdate(() => {
-			camera.position.x = coords.x
-			camera.position.y = coords.y
-			camera.position.z = coords.z
-			renderer.render(scene, camera);
-	
-		})
-		.easing(TWEEN.Easing.Quintic.Out)
-		.start();
-	console.log("move")
-	//controls.update();
-	console.log(camera.position);
-};
 
 window.place1 = function (){
 	console.log("camera place");
