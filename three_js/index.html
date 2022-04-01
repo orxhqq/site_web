@@ -15,10 +15,10 @@
 </head>
 
 <body>
-	<div class="flex" data-controller="presenter">
-		<section class="w-1/3 p-6">
-			<div class="" data-presenter-target="etage">
-				<h2 class="text-3xl font-bold text-sky-800 text-center mt-6">Cybersécuritée</h2>
+	<div class="flex drop-shadow-2xl " data-controller="presenter">
+		<section class="w-1/3 p-6 "  data-presenter-target="section">
+			<div class=" " data-presenter-target="etage">
+				<h2 class="text-3xl font-bold text-sky-800 text-center mt-6 ">Cybersécuritée</h2>
 				<h3 class="mt-12 text-xl" >Quand j'ai commencé ?</h3>
 				<p class="ml-6 mt-4">J'ai commencé jeune en faisant des petites analyses de réseaux, à pésent je participe à des CTF type
 					root-me.org.
@@ -36,7 +36,7 @@
 				<p class="ml-6 mt-4">j'aimerais à l'avenir me spécialiser en tant qu'ingénieur dans les systèmes embarqués linux dans la
 					DGSE, ou travailler dans la crytptographie, ou dans la rétro-ingénierie</p>
 			</div>
-			<div data-presenter-target="etage">
+			<div class=" " data-presenter-target="etage">
 				<h2 class="text-3xl font-bold text-sky-800 text-center mt-6">Développement</h2>
 				<h3 class="mt-12 text-xl" >Quand j'ai commencé ?</h3>
 				<p class="ml-6 mt-4">j'ai commencé grâce à la cybersécurité, c'est une compétence utile pour comprendre le fonctionnement
@@ -50,7 +50,7 @@
 				<p class="ml-6 mt-4">je trouve que la programmation permet de comprendre comment fonctionne notre environement, savoir
 					comment est fait un site web et une application que l'on utilise dans la vie de tout les jours</p>
 			</div>
-			<div data-presenter-target="etage">
+			<div class="" data-presenter-target="etage">
 				<h2 class="text-3xl font-bold text-sky-800 text-center mt-6">Mathématiques</h2>
 				<h3 class="mt-12 text-xl">Quand j'ai commencé ?</h3>
 				<p class="ml-6 mt-4">le moment où les mathématiques sont vraiment devenus important pour moi est la période de confinement
@@ -62,7 +62,7 @@
 				<p class="ml-6 mt-4">les mathématiques donnent une vision différente de notre entourage et permet de réfléchir avec
 					logique pour régler toutes sortes de problèmes.</p>
 			</div>
-			<div data-presenter-target="etage">
+			<div class="" data-presenter-target="etage">
 				<h2 class="text-3xl font-bold text-sky-800 text-center mt-6">Imprimerie</h2>
 				<h3 class="mt-12 text-xl">Quand j'ai commencé ?</h3>
 				<p class="ml-6 mt-4">j'ai fais trois années de lycée professionnel dans l'imprimerie, option graphique</p>
@@ -79,9 +79,9 @@
 			<div class="relative">
 				<div id="canvas"></div>
 				<div class="bottom-0 inset-x-0 absolute flex flex-col mb-2 gap-y-2 items-center">
-					<button class="bg-white px-4 py-2 text-lg rounded-lg text-sky-800"
+					<button class="bg-white px-4 py-2 text-lg rounded-lg text-sky-800 font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-sky-800 hover:text-white duration-300"
 						onclick="place(currentPlace + 1);" data-action="click->presenter#up">monter</button>
-					<button class="bg-white px-4 py-2 text-lg rounded-lg text-sky-800"
+					<button class="bg-white px-4 py-2 text-lg rounded-lg text-sky-800 font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-sky-800 hover:text-white duration-300"
 						onclick="place(currentPlace - 1);" data-action="click->presenter#down">décendre</button>
 				</div>
 			</div>

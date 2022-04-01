@@ -13,10 +13,9 @@ import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
 
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
-lookAt = new THREE.Vector3(57.6, -31.2, 8.4);
-camera.position.set(-100, 18, 136);
-camera.lookAt(lookAt);
-window.lookAt = lookAt;
+lookAt = new THREE.Vector3(57.6, -11.6, 8.4);
+camera.position.set(-100, 62.4, 136);
+camera.lookAt(lookAt); window.lookAt = lookAt;
 window.camera = camera;
 // camera.position.z = 5;
 // camera.setViewOffset (0.25, 0.25, 0.25, 0.25, 0.25, 0.25);
@@ -38,7 +37,7 @@ new GLTFLoader()
 	.setDRACOLoader(new DRACOLoader().setDecoderPath('../js/libs/draco/gltf/'))
 	.load(
 		// resource URL
-		'untitled4.glb',
+		'model.glb',
 		// called when the resource is loaded
 		function (gltf) {
 
@@ -149,13 +148,13 @@ window.place1 = function () {
 	console.log("camera place");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: -100, y: 18, z: 136 })
+		.to({ x: -100, y: 62.4, z: 136 })
 		.onUpdate(function () {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
 
-			lookAtplace = new THREE.Vector3(57.6, -31.2, 8.4)
+			lookAtplace = new THREE.Vector3(57.6, -11.6, 8.4)
 			lookAt.x = lookAtplace.x
 			lookAt.y = lookAtplace.y
 			lookAt.z = lookAtplace.z
@@ -177,12 +176,12 @@ window.place2 = function () {
 	console.log("camera place2");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: -109.6, y: 72, z: -60.8 })
+		.to({ x: -124.4, y: 111.6, z: -100 })
 		.onUpdate(function () {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
-			lookAtplace = new THREE.Vector3(57.6, -16.4, 112.4)
+			lookAtplace = new THREE.Vector3(67.2, -11.6, 121.2)
 			lookAt.x = lookAtplace.x
 			lookAt.y = lookAtplace.y
 			lookAt.z = lookAtplace.z
@@ -200,12 +199,12 @@ window.place3 = function () {
 	console.log("camera place2");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: 52.4, y: 121.4, z: -70.4 })
+		.to({ x: 72, y: 150.8, z: -100 })
 		.onUpdate(function () {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
-			lookAtplace = new THREE.Vector3(-55.6, 67.2, 77.2)
+			lookAtplace = new THREE.Vector3(-85.2, 77.2, 67.2)
 			lookAt.x = lookAtplace.x
 			lookAt.y = lookAtplace.y
 			lookAt.z = lookAtplace.z
@@ -224,12 +223,12 @@ window.place4 = function () {
 	console.log("camera place2");
 	const coords = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
 	new TWEEN.Tween(coords)
-		.to({ x: 106.4, y: 170.4, z: 121.2 })
+		.to({ x: 126.4, y: 190, z: 165.6 })
 		.onUpdate(function () {
 			camera.position.x = coords.x
 			camera.position.y = coords.y
 			camera.position.z = coords.z
-			lookAtplace = new THREE.Vector3( 22.8, 136, 13.2 )
+			lookAtplace = new THREE.Vector3(52.4, 165.6, 13.2)
 			lookAt.x = lookAtplace.x
 			lookAt.y = lookAtplace.y
 			lookAt.z = lookAtplace.z

@@ -1,7 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import { add, Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["etage"]
+    static targets = ["etage", "section"]
 
     connect() {
         this.showCurrentEtage()
@@ -17,7 +17,17 @@ export default class extends Controller {
 
     showCurrentEtage() {
         this.etageTargets.forEach((etage, index) => {
-            etage.hidden = (index != window.currentPlace - 1)
-        })
+
+            if (index == window.currentPlace - 1) {
+
+
+                etage.classList.remove("hidden");
+           
+            } else {
+                etage.classList.add("hidden");
+
+
+            }
+        });
     }
 }
