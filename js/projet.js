@@ -11,9 +11,12 @@ import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
 const canvas = document.getElementById("canvas");
-const camera = new THREE.PerspectiveCamera(35, canvas.offsetWidth / window.innerHeight, 0.01, 10000);
+if (canvas.offsetWidth < 768)
+	{fov = 45}
+else { fov = 35 }
+const camera = new THREE.PerspectiveCamera(fov, canvas.offsetWidth / window.innerHeight, 0.01, 10000);
 lookAt = new THREE.Vector3(57.6, -11.6, -65.6)
-camera.position.set(-124.4, 62.4, 121.2 )
+camera.position.set(-124.4, 62.4, 121.2)
 camera.lookAt(lookAt);
 window.lookAt = lookAt;
 window.camera = camera;
@@ -102,20 +105,20 @@ function updatelookAt() {
 	camera.lookAt(lookAt);
 	camera.updateProjectionMatrix();
 }
-const debug = false
+const debug = true
 
-if (debug){
+if (debug) {
 	const gui = new GUI();
-gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
-const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
-gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near').onChange(updateCamera);
-gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far').onChange(updateCamera);
-gui.add(camera.position, 'x', -200, 200).name("camera.position.x").onChange(updateCamera);
-gui.add(camera.position, 'z', -200, 200).name("camera.position.z").onChange(updateCamera);
-gui.add(camera.position, 'y', -200, 200).name("camera.position.y").onChange(updateCamera);
-gui.add(lookAt, "x", -200, 200).onChange(updatelookAt);
-gui.add(lookAt, "y", -200, 200).onChange(updatelookAt);
-gui.add(lookAt, "z", -200, 200).onChange(updatelookAt);
+	gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
+	const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
+	gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near').onChange(updateCamera);
+	gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far').onChange(updateCamera);
+	gui.add(camera.position, 'x', -200, 200).name("camera.position.x").onChange(updateCamera);
+	gui.add(camera.position, 'z', -200, 200).name("camera.position.z").onChange(updateCamera);
+	gui.add(camera.position, 'y', -200, 200).name("camera.position.y").onChange(updateCamera);
+	gui.add(lookAt, "x", -200, 200).onChange(updatelookAt);
+	gui.add(lookAt, "y", -200, 200).onChange(updatelookAt);
+	gui.add(lookAt, "z", -200, 200).onChange(updatelookAt);
 
-window.gui = gui
+	window.gui = gui
 }
