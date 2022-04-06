@@ -27,23 +27,23 @@ export default class extends Controller {
         let newPlace
         switch (newCameraPlace) {
             case 1:
-                lookAtplace = new THREE.Vector3(57.6, -11.6, 8.4)
-                newPlace = { x: -100, y: 62.4, z: 136 }
+                lookAtplace = new THREE.Vector3(57.6, -11.6, -65.6)
+                newPlace = { x: -124.4, y: 62.4, z: 121.2 }
                 this._moveCameraTo(newPlace, lookAtplace)
                 break;
             case 2:
                 lookAtplace = new THREE.Vector3(67.2, -11.6, 121.2)
-                newPlace = { x: -124.4, y: 111.6, z: -100 }
+                newPlace = { x: -102, y: 111.6, z: -124 }
                 this._moveCameraTo(newPlace, lookAtplace)
                 break;
             case 3:
                 lookAtplace = new THREE.Vector3(-85.2, 77.2, 67.2)
-                newPlace = { x: 72, y: 150.8, z: -100 }
+                newPlace = { x: 118, y: 150.8, z: -114.8 }
                 this._moveCameraTo(newPlace, lookAtplace)
                 break;
             case 4:
-                lookAtplace = new THREE.Vector3(52.4, 165.6, 13.2)
-                newPlace = { x: 126.4, y: 190, z: 165.6 }
+                lookAtplace = new THREE.Vector3(13.2, 160.8, 22.8)
+                newPlace = { x: 112.2, y: 190, z: 116 }
                 this._moveCameraTo(newPlace, lookAtplace)
                 break;
         }

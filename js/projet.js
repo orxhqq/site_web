@@ -6,14 +6,14 @@ Stimulus.register("presenter", PresenterController)
 Stimulus.register("model", ModelController)
 
 window.currentPlace = 1;
-
+import GUI from 'lil-gui';
 import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
-
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
-lookAt = new THREE.Vector3(57.6, -11.6, 8.4);
-camera.position.set(-100, 62.4, 136);
+const canvas = document.getElementById("canvas");
+const camera = new THREE.PerspectiveCamera(35, canvas.offsetWidth / window.innerHeight, 0.01, 10000);
+lookAt = new THREE.Vector3(57.6, -11.6, -65.6)
+camera.position.set(-124.4, 62.4, 121.2 )
 camera.lookAt(lookAt);
 window.lookAt = lookAt;
 window.camera = camera;
@@ -53,7 +53,9 @@ new GLTFLoader()
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+renderer.setSize(canvas.offsetWidth, window.innerHeight);
 window.renderer = renderer;
 window.scene = scene;
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -69,3 +71,51 @@ function animate(time) {
 
 }
 requestAnimationFrame(animate)
+
+class MinMaxGUIHelper {
+	constructor(obj, minProp, maxProp, minDif) {
+		this.obj = obj;
+		this.minProp = minProp;
+		this.maxProp = maxProp;
+		this.minDif = minDif;
+	}
+	get min() {
+		return this.obj[this.minProp];
+	}
+	set min(v) {
+		this.obj[this.minProp] = v;
+		this.obj[this.maxProp] = Math.max(this.obj[this.maxProp], v + this.minDif);
+	}
+	get max() {
+		return this.obj[this.maxProp];
+	}
+	set max(v) {
+		this.obj[this.maxProp] = v;
+		this.min = this.min;  // this will call the min setter
+	}
+}
+function updateCamera() {
+	camera.updateProjectionMatrix();
+}
+function updatelookAt() {
+	console.log(lookAt);
+	camera.lookAt(lookAt);
+	camera.updateProjectionMatrix();
+}
+const debug = false
+
+if (debug){
+	const gui = new GUI();
+gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
+const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
+gui.add(minMaxGUIHelper, 'min', 0.1, 50, 0.1).name('near').onChange(updateCamera);
+gui.add(minMaxGUIHelper, 'max', 0.1, 50, 0.1).name('far').onChange(updateCamera);
+gui.add(camera.position, 'x', -200, 200).name("camera.position.x").onChange(updateCamera);
+gui.add(camera.position, 'z', -200, 200).name("camera.position.z").onChange(updateCamera);
+gui.add(camera.position, 'y', -200, 200).name("camera.position.y").onChange(updateCamera);
+gui.add(lookAt, "x", -200, 200).onChange(updatelookAt);
+gui.add(lookAt, "y", -200, 200).onChange(updatelookAt);
+gui.add(lookAt, "z", -200, 200).onChange(updatelookAt);
+
+window.gui = gui
+}
