@@ -105,9 +105,9 @@ function updatelookAt() {
 	camera.lookAt(lookAt);
 	camera.updateProjectionMatrix();
 }
-const debug = true
+const controlGui = false
 
-if (debug) {
+if (controlGui) {
 	const gui = new GUI();
 	gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
 	const minMaxGUIHelper = new MinMaxGUIHelper(camera, 'near', 'far', 0.1);
