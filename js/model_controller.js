@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import * as THREE from 'three';
+import { GLTFLoader } from '../vendor/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
 
 export default class extends Controller {
     static targets = [""]
@@ -10,7 +12,7 @@ export default class extends Controller {
     moveCameraUp() {
         this._place(currentPlace + 1)
     }
-    
+
     moveCameraDown() {
         this._place(currentPlace - 1)
     }

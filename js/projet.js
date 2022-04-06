@@ -5,13 +5,11 @@ window.Stimulus = Application.start()
 Stimulus.register("presenter", PresenterController)
 Stimulus.register("model", ModelController)
 
+window.currentPlace = 1;
 
 import * as THREE from 'three';
-// import { VOXLoader, VOXMesh } from '../vendor/jsm/loaders/VOXLoader.js';
-//import { OrbitControls } from '../vendor/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from '../vendor/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from '../vendor/jsm/loaders/DRACOLoader.js';
-
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.01, 10000);
 lookAt = new THREE.Vector3(57.6, -11.6, 8.4);
@@ -38,27 +36,20 @@ new GLTFLoader()
 		'model.glb',
 		// called when the resource is loaded
 		function (gltf) {
-
 			scene.add(gltf.scene);
-
 			gltf.animations; // Array<THREE.AnimationClip>
 			gltf.scene; // THREE.Group
 			gltf.scenes; // Array<THREE.Group>
 			gltf.cameras; // Array<THREE.Camera>
 			gltf.asset; // Object
-
 		},
-
 		function (xhr) {
 			console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
 		},
 		function (error) {
 			console.log('An error happened');
-
 		}
 	);
-
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -69,18 +60,6 @@ renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
 document.getElementById("canvas").appendChild(renderer.domElement);
-
-function updateCamera() {
-	camera.updateProjectionMatrix();
-}
-function updatelookAt() {
-	console.log(lookAt);
-	camera.lookAt(lookAt);
-	camera.updateProjectionMatrix();
-
-}
-
-window.currentPlace = 1;
 
 function animate(time) {
 	requestAnimationFrame(animate)
